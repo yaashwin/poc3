@@ -1,0 +1,29 @@
+---
+- name: Configure Jenkins and SonarQube on the target machine
+  hosts: POC_IN
+  become: yes
+
+  tasks:
+    # Including the installation and configuration tasks
+    - name: Include installation and configuration tasks
+      include_tasks: /home/yaashwin/terra-ansi/playbooks/installation.yml
+
+    # Including the Jenkins setup and login tasks
+    - name: Include Jenkins setup and login tasks
+      include_tasks: /home/yaashwin/terra-ansi/playbooks/restart.yml
+
+    # Including the SonarQube project and token management tasks
+    - name: Include SonarQube project and token management tasks
+      include_tasks: /home/yaashwin/terra-ansi/playbooks/config.yml
+
+    # Including Jenkins job and tool management tasks
+    - name: Include Jenkins job and tool management tasks
+      include_tasks: /home/yaashwin/terra-ansi/playbooks/jenkins_job.yml
+
+    # Including API generation
+    - name: Include Jenkins job and tool management tasks
+      include_tasks: /home/yaashwin/terra-ansi/playbooks/api.yml
+
+    # Including local project creation in sonar
+    - name: Include Jenkins job and tool management tasks
+      include_tasks: /home/yaashwin/terra-ansi/playbooks/sonar_project.yml
