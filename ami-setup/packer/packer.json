@@ -1,0 +1,15 @@
+{
+    "builders": [{
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami":  "ami-0e86e20dae9224db8",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "POC_IMAGE"
+    }],
+    "provisioners": [
+      {
+        "type": "ansible",
+        "playbook_file": "/home/yaashwin/terraform3/ami-setup/playbooks/ami_set.yml"      }
+    ]
+  }
